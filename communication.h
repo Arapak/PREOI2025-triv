@@ -343,7 +343,7 @@ std::tuple<ANSWER_TYPE, int, size_t> Communication<DATA_TYPE, ANSWER_TYPE>::mast
 
     std::array<childStatus, 2> status{childStatus::RUNNING};
 
-    for (; messages < MESSAGE_LIMIT;) {
+    for (; messages <= MESSAGE_LIMIT;) {
         auto type = receive<messageType>(running_child, false);
 
 #ifdef __DEBUG_COMMUNICATION
@@ -417,7 +417,7 @@ std::tuple<ANSWER_TYPE, int, size_t> Communication<DATA_TYPE, ANSWER_TYPE>::mast
         if (status[otherChild(running_child)] != childStatus::EXIT_WO_ANSWER) running_child = otherChild(running_child);
     }
 
-    if (messages == MESSAGE_LIMIT) {
+    if (messages > MESSAGE_LIMIT) {
         master_exitGracefully(ExitType::ERROR, ErrorType::MESSAGE_LIMIT);
     }
     if (!optional_answer.has_value()) {
