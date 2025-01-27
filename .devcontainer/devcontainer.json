@@ -6,7 +6,7 @@
   },
   "customizations": {
     "codespaces": {
-      "openFiles": ["owk.cpp"]
+      "openFiles": ["tri.cpp"]
     }
   }
 }
