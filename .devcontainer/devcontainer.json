@@ -1,0 +1,12 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base:debian-12",
+  "waitFor": "onCreateCommand",
+  "postAttachCommand": {
+    "server": "./compile.sh 1"
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["owk.cpp"]
+    }
+  }
+}
